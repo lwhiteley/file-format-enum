@@ -1,0 +1,32 @@
+{
+  "name": "file-formats",
+  "version": "0.0.1",
+  "description": "Library of file formats. Get a list of file formats by type",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwhiteley/file-formats.git"
+  },
+  "keywords": [
+    "file",
+    "format",
+    "formats",
+    "enum"
+  ],
+  "author": "Layton Whiteley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lwhiteley/file-formats/issues"
+  },
+  "homepage": "https://github.com/lwhiteley/file-formats#readme",
+  "dependencies": {
+    "glob": "^7.0.5",
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "tap": "^6.2.0"
+  }
+}

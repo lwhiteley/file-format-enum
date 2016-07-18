@@ -1,0 +1,4 @@
+gruntfile.js
+tmp
+.travis.yml
+.DS_Store
