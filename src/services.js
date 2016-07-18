@@ -7,6 +7,14 @@ var definitions = require('./definitions'),
       extensions: 'ext'
     };
 
+var normalizeCategories = function(array){
+  _.forEach(array, function(item, i){
+    if(_.isString(item))
+    array[i] = _.trim(item).toLowerCase();
+  })
+  return array;
+}
+
 service.list = function(options){
   var list = [],
       doptions = {
@@ -23,7 +31,7 @@ service.list = function(options){
     if(_.isPlainObject(definition) ){
         if(_.isString(doptions.category) &&
             _.isString(definition.category) &&
-            definition.category.toLowerCase() === doptions.category.toLowerCase()
+            _.includes(normalizeCategories(definition.category.split(',')), doptions.category.toLowerCase())
           ){
           return definition[propMap[doptions.list]].toLowerCase();
         }
