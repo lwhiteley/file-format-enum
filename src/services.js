@@ -27,16 +27,24 @@ service.list = function(options){
       doptions = _.merge(doptions, options);
   }
 
+  doptions.list = doptions.list || 'extensions';
+
   list = _.map(definitions, function(definition){
     if(_.isPlainObject(definition) ){
         if(_.isString(doptions.category) &&
             _.isString(definition.category) &&
             _.includes(normalizeCategories(definition.category.split(',')), doptions.category.toLowerCase())
           ){
+            if(doptions.list === 'definitions'){
+              return definition
+            }
           return definition[propMap[doptions.list]].toLowerCase();
         }
 
         if( !_.isString(doptions.category) ){
+          if(doptions.list === 'definitions'){
+            return definition
+          }
           return definition[propMap[doptions.list]].toLowerCase();
         }
     }
