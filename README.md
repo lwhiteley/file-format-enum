@@ -38,3 +38,14 @@ console.log(fileFormats.list('video'))
 
 - Feel free to submit PRs with additional formats or updated information
 - Please see [definitions](src/definitions) for examples of how to add extension definitions
+
+### Notes
+- Formats still being filled out (an ongoing process)
+- If something is not there that you know of, submit a PR
+- This library can expand beyond the basic categories of audio, video, and image
+- The aim is to have an extensive list of formats and whatever categories they fall in
+
+### Useful Links
+- https://en.wikipedia.org/wiki/Audio_file_format
+- https://en.wikipedia.org/wiki/Video_file_format
+- https://en.wikipedia.org/wiki/Image_file_formats

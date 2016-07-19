@@ -7,11 +7,11 @@ var commonProps = {
 }
 
 var definitions = [
-  _.merge({
+  _.merge({}, commonProps, {
      ext: '.3gp',
     name: '3GPP',
     audioCodecs: 'AMR-NB, AMR-WB, AMR-WB+, AAC-LC, HE-AAC v1 or Enhanced aacPlus (HE-AAC v2)'
-  },commonProps),
+  }),
 
   _.merge({
      ext: '.3g2',
