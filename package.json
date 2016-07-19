@@ -1,6 +1,6 @@
 {
   "name": "file-formats",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library of file formats. Get a list of file formats by type",
   "main": "index.js",
   "scripts": {
