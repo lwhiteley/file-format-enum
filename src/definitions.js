@@ -1,7 +1,7 @@
 var glob = require('glob'),
     _ = require('lodash'),
     PATH = require('path'),
-    definitionsFiles = glob.sync('./src/definitions/**/*.def.js', {});
+    definitionsFiles = glob.sync('./src/definitions/**/*.js', {});
 
 var compiledDefs = []
 
