@@ -1,7 +1,7 @@
 var FFE = {},
     _ = require('lodash'),
     definitions = require('./src/definitions'),
-    services = require('./src/services');
+    services = require('./src/services')(__dirname);
 
 // FFE.definitions = definitions;
 FFE = _.merge(FFE, services);

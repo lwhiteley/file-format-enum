@@ -1,64 +1,70 @@
-var service = {};
-var definitions = require('./definitions'),
-    _ = require('lodash');
+var services = function(root){
+  var service = {};
+  var definitions = require('./definitions')(root),
+      _ = require('lodash');
 
-    var propMap= {
-      formats: 'name',
-      extensions: 'ext'
-    };
-
-var normalizeCategories = function(array){
-  _.forEach(array, function(item, i){
-    if(_.isString(item))
-    array[i] = _.trim(item).toLowerCase();
-  })
-  return array;
-}
-
-service.list = function(options){
-  var list = [],
-      doptions = {
-        category: null,
-        list: 'extensions'
+      var propMap= {
+        formats: 'name',
+        extensions: 'ext'
       };
-  if( !_.isPlainObject(options) ){
-    doptions.category = options;
-  }else{
-      doptions = _.merge(doptions, options);
+
+  var normalizeCategories = function(array){
+    _.forEach(array, function(item, i){
+      if(_.isString(item))
+      array[i] = _.trim(item).toLowerCase();
+    })
+    return array;
   }
 
-  doptions.list = doptions.list || 'extensions';
+  service.list = function(options){
+    var list = [],
+        doptions = {
+          category: null,
+          list: 'extensions'
+        };
+    if( !_.isPlainObject(options) ){
+      doptions.category = options;
+    }else{
+        doptions = _.merge(doptions, options);
+    }
 
-  list = _.map(definitions, function(definition){
-    if(_.isPlainObject(definition) ){
-        if(_.isString(doptions.category) &&
-            _.isString(definition.category) &&
-            _.includes(normalizeCategories(definition.category.split(',')), doptions.category.toLowerCase())
-          ){
+    doptions.list = doptions.list || 'extensions';
+
+    list = _.map(definitions, function(definition){
+      if(_.isPlainObject(definition) ){
+          if(_.isString(doptions.category) &&
+              _.isString(definition.category) &&
+              _.includes(normalizeCategories(definition.category.split(',')), doptions.category.toLowerCase())
+            ){
+              if(doptions.list === 'definitions'){
+                return definition
+              }
+            return definition[propMap[doptions.list]].toLowerCase();
+          }
+
+          if( !_.isString(doptions.category) ){
             if(doptions.list === 'definitions'){
               return definition
             }
-          return definition[propMap[doptions.list]].toLowerCase();
-        }
-
-        if( !_.isString(doptions.category) ){
-          if(doptions.list === 'definitions'){
-            return definition
+            return definition[propMap[doptions.list]].toLowerCase();
           }
-          return definition[propMap[doptions.list]].toLowerCase();
-        }
-    }
+      }
 
-  })
+    })
 
-  return _.uniq(_.compact(list));
-}
-
-service.definition = function(name){
-  if(_.isString(name)){
-    return _.find(definitions, {name:name.toUpperCase()})
+    return _.uniq(_.compact(list));
   }
-  return null;
+
+  service.definition = function(name){
+    if(_.isString(name)){
+      return _.find(definitions, {name:name.toUpperCase()})
+    }
+    return null;
+  }
+
+  return service;
 }
 
-module.exports = service;
+
+
+module.exports = services;

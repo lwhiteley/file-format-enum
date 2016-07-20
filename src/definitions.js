@@ -1,15 +1,17 @@
-var glob = require('glob'),
-    _ = require('lodash'),
-    PATH = require('path'),
-    definitionsFiles = glob.sync('./src/definitions/**/*.js', {});
+module.exports = function(root){
+  var glob = require('glob'),
+      _ = require('lodash'),
+      PATH = require('path'),
+      definitionsFiles = glob.sync('./src/definitions/**/*.js', {root: root});
 
-var compiledDefs = []
+console.log(definitionsFiles)
+  _.forEach(definitionsFiles, function(defFile){
+    var def = require(PATH.resolve(root, defFile));
+    if(_.isArray(def)){
+      compiledDefs = _.union(compiledDefs, def);
+    }
+  })
 
-_.forEach(definitionsFiles, function(defFile){
-  var def = require(PATH.resolve(defFile));
-  if(_.isArray(def)){
-    compiledDefs = _.union(compiledDefs, def);
-  }
-})
+  return compiledDefs;
 
-module.exports = compiledDefs;
+};
