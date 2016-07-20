@@ -63,6 +63,14 @@ var services = function(root) {
         }
         return null;
     }
+    service.categories = function() {
+      var result = [];
+        _.forEach(definitions, function(def){
+          var cat = normalizeCategories(def.category.split(','))
+          result = _.uniq(_.union(result, cat));
+        })
+        return result;
+    }
 
     return service;
 }

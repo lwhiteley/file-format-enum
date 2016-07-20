@@ -11,19 +11,29 @@ npm install --save file-formats
 
 interface
 ```
+______________________________________________________
 fileFormats.list(category)
 
-METHODS:
-______________________________________________________
+PARAMS:
 category (String): Category or type to search by
                    Possible values: video | image | audio |  ....
 RETURNS
 list (Array): List of extensions or values searched for
 ______________________________________________________
 
+fileFormats.categories()
+
+PARAMS:
+none
+
+RETURNS
+categories (Array): List of categories available
+______________________________________________________
+
 ```
 
 ```js
+//EXAMPLE
 var fileFormats = require('file-formats');
 
 //eg. Get a list of all extensions available
