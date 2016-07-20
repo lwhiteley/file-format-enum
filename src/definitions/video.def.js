@@ -21,8 +21,7 @@ var definitions = [{
         audioCodecs: 'Variant of IMA, ADPCM',
         category: 'video',
         notes: 'Proprietary video file format produced for MP4 players and S1 MP3 players with video playback'
-    },
-    {
+    }, {
         ext: '.avi',
         name: 'AVI',
         longName: '',
@@ -148,8 +147,7 @@ var definitions = [{
         audioCodecs: '?',
         category: 'video',
         notes: 'used by Quake 3'
-    },
-    {
+    }, {
         ext: '.vob',
         name: 'Vob',
         longName: '',
