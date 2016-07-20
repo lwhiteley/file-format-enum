@@ -5,20 +5,20 @@ module.exports = function(root) {
     //definitionsFiles = glob.sync('./src/definitions/**/*.js', {root: root});
 
     var definitionsFiles = [
-        './src/definitions/3gp.def.js',
-        './src/definitions/audio.def.js',
-        './src/definitions/flash.def.js',
-        './src/definitions/gif.def.js',
-        './src/definitions/mp4.def.js',
-        './src/definitions/mpeg1.def.js',
-        './src/definitions/mpeg2.def.js',
-        './src/definitions/video.def.js'
+        './definitions/3gp.def.js',
+        './definitions/audio.def.js',
+        './definitions/flash.def.js',
+        './definitions/gif.def.js',
+        './definitions/mp4.def.js',
+        './definitions/mpeg1.def.js',
+        './definitions/mpeg2.def.js',
+        './definitions/video.def.js'
     ];
 
     var compiledDefs = [];
 
     _.forEach(definitionsFiles, function(defFile) {
-        var def = require(PATH.resolve(root, defFile));
+        var def = require(defFile);
         if (_.isArray(def)) {
             compiledDefs = _.union(compiledDefs, def);
         }
